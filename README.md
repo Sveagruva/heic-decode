@@ -2,62 +2,17 @@
 
 > Decode HEIC images to extract raw pixel data.
 
-[![CI][ci.svg]][ci.link]
-[![npm-downloads][npm-downloads.svg]][npm.link]
-[![npm-version][npm-version.svg]][npm.link]
-
-[ci.svg]: https://github.com/catdad-experiments/heic-decode/actions/workflows/ci.yml/badge.svg
-[ci.link]: https://github.com/catdad-experiments/heic-decode/actions/workflows/ci.yml
-[npm-downloads.svg]: https://img.shields.io/npm/dm/heic-decode.svg
-[npm.link]: https://www.npmjs.com/package/heic-decode
-[npm-version.svg]: https://img.shields.io/npm/v/heic-decode.svg
-
-## Install
-
-```bash
-npm install heic-decode
-```
-
 ## Usage
 
 Decode the main image in the file:
 
 ```javascript
-const fs = require('fs');
-const { promisify } = require('util');
-const decode = require('heic-decode');
+import { HEIC } from "https://code4fukui.github.io/heic-decode/HEIC.js";
 
-(async () => {
-  const buffer = await promisify(fs.readFile)('/path/to/my/image.heic');
-  const {
-    width,  // integer width of the image
-    height, // integer height of the image
-    data    // Uint8ClampedArray containing pixel data
-  } = await decode({ buffer });
-})();
-```
-
-Decode all images in the file:
-
-```javascript
-const fs = require('fs');
-const { promisify } = require('util');
-const decode = require('heic-decode');
-
-(async () => {
-  const buffer = await promisify(fs.readFile)('/path/to/my/multi-image.heic');
-  const images = await decode.all({ buffer });
-
-  for (let image of images) {
-    // decode and use each image individually
-    // so you don't run out of memory
-    const {
-      width,  // integer width of the image
-      height, // integer height of the image
-      data    // Uint8ClampedArray containing pixel data
-    } = await image.decode();
-  }
-})();
+const fn = "./temp/0003.heic";
+const buffer = await Deno.readFile(fn);
+const images = await HEIC.decode(buffer);
+console.log(images);
 ```
 
 When the images are decoded, the return value is a plain object in the format of [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData). You can use this object to integrate with other imaging libraries for processing.

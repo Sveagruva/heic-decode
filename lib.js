@@ -40,7 +40,7 @@ const decodeImage = async (image) => {
   return { width, height, data };
 };
 
-module.exports = libheif => {
+export default libheif => {
   const decodeBuffer = async ({ buffer, all }) => {
     if (!isHeic(buffer)) {
       throw new TypeError('input buffer is not a HEIC image');

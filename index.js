@@ -1,6 +1,8 @@
-const libheif = require('libheif-js/wasm-bundle');
+import libheif_init from "https://code4fukui.github.io/libheif-js/libheif-wasm/libheif-bundle.mjs";
+import lib from "./lib.js";
 
-const { one, all } = require('./lib.js')(libheif);
+const libheif = libheif_init();
 
-module.exports = one;
-module.exports.all = all;
+const { one, all } = lib(libheif);
+
+export default { one, all };
