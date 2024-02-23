@@ -19,7 +19,7 @@ export const decodeHEIC = async (buffer) => {
   const res = [];
   for (const image of images) {
     const img = await image.decode();
-    img.data = b2i(img.data);
+    //img.data = b2i(img.data);
     res.push(img);
   }
   return res;
