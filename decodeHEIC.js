@@ -4,11 +4,15 @@ import lib from "./lib.js";
 const libheif = libheif_init();
 const decode = lib(libheif);
 
+const b2i = (bin) => new Uint32Array(bin.buffer);
+
 export const decodeHEIC = async (buffer) => {
   const images = await decode.all({ buffer });
   const res = [];
   for (const image of images) {
-    res.push(await image.decode());
+    const img = await image.decode();
+    img.data = b2i(img.data);
+    res.push(img);
   }
   return res;
 };
