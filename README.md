@@ -19,6 +19,10 @@ When the images are decoded, the return value is a plain object in the format of
 
 _Note that while the decoder returns a Promise, it does the majority of the work synchronously, so you should consider using a worker thread in order to not block the main thread in highly concurrent production environments._
 
+## Dependencies
+
+* libheif-wasm of [libheif-js](https://code4fukui.github.io/libheif-js/)
+
 ## Related
 
 * [heic-cli](https://github.com/catdad-experiments/heic-cli) - convert heic/heif images to jpeg or png from the command line
