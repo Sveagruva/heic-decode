@@ -21,7 +21,7 @@ _Note that while the decoder returns a Promise, it does the majority of the work
 
 ## Dependencies
 
-* libheif-wasm of [libheif-js](https://code4fukui.github.io/libheif-js/)
+* libheif-wasm of [libheif-js](https://github.com/code4fukui/libheif-js/)
 
 ## Related
 
