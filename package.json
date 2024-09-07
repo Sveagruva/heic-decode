@@ -1,6 +1,6 @@
 {
   "name": "heic-decode-esm",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Decode HEIC images to raw data",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/Sveagruva/heic-decode#readme",
   "dependencies": {
-    "libheif-js": "^1.17.1"
+    "libheif-js": "^1.17.1",
+    "pngjs": "^7.0.0"
   },
   "devDependencies": {
     "buffer-to-uint8array": "^1.1.0",
@@ -37,7 +38,6 @@
     "mocha": "^7.0.0",
     "node-fetch": "^2.6.0",
     "pixelmatch": "^5.2.1",
-    "pngjs": "^5.0.0",
     "rootrequire": "^1.0.0"
   },
   "engines": {
