@@ -1,23 +1,21 @@
 /* eslint-env mocha */
-const { promisify } = require('util');
-const fs = require('fs');
-const path = require('path');
+import { promisify } from 'util';
+import fs from 'fs';
+import path from 'path';
 
-const root = require('rootrequire');
-const { expect } = require('chai');
-const { PNG } = require('pngjs');
-const toUint8 = require('buffer-to-uint8array');
-const pixelmatch = require('pixelmatch');
+import root from 'rootrequire';
+import {expect} from 'chai';
+import {PNG} from 'pngjs';
+import toUint8 from 'buffer-to-uint8array';
+import pixelmatch from 'pixelmatch';
+import libheif from 'libheif-js';
+
+import lib from './../lib.js';
+const { one, all } = lib(libheif);
 
 const readFile = promisify(fs.readFile);
 
-describe('heic-decode (default wasm bundle)', () => {
-  runTests(require(root));
-});
-
 describe('heic-decode (js)', () => {
-  const libheif = require('libheif-js');
-  const { one, all } = require('../lib')(libheif);
   const decode = one;
   decode.all = all;
 

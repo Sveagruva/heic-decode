@@ -1,4 +1,4 @@
-import libheif_init from "https://code4fukui.github.io/libheif-js/libheif-wasm/libheif-bundle.mjs";
+import libheif_init from "./libheif-wasm";
 import lib from "./lib.js";
 
 const libheif = libheif_init();

@@ -1,6 +1,6 @@
 {
-  "name": "heic-decode",
-  "version": "2.0.0",
+  "name": "heic-decode-esm",
+  "version": "2.0.3",
   "description": "Decode HEIC images to raw data",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/catdad-experiments/heic-decode.git"
+    "url": "git+https://github.com/Sveagruva/heic-decode.git"
   },
+  "type": "module",
   "keywords": [
     "heic",
     "heif",
@@ -21,9 +22,9 @@
   "author": "Kiril Vatev <vatev.1@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/catdad-experiments/heic-decode/issues"
+    "url": "https://github.com/Sveagruva/heic-decode/issues"
   },
-  "homepage": "https://github.com/catdad-experiments/heic-decode#readme",
+  "homepage": "https://github.com/Sveagruva/heic-decode#readme",
   "dependencies": {
     "libheif-js": "^1.17.1"
   },

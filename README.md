@@ -1,18 +1,29 @@
 # heic-decode
 
 > Decode HEIC images to extract raw pixel data.
+> Works in NEXTJS
 
 ## Usage
 
-Decode the main image in the file:
+```
+npm install heic-decode-esm
+```
 
 ```javascript
-import { HEIC } from "https://code4fukui.github.io/heic-decode/HEIC.js";
+import convertHeic from "heic-decode-esm";
 
-const fn = "./temp/0003.heic";
-const buffer = await Deno.readFile(fn);
-const images = await HEIC.decode(buffer);
-console.log(images);
+const data = await convertHeic.one({
+  buffer: await fs.readFile("in.heic"),
+});
+
+console.log({
+  width: data.width,
+  height: data.height,
+  buffer: data.buffer,
+});
+
+await fs.writeFile("out.png", data.buffer);
+
 ```
 
 When the images are decoded, the return value is a plain object in the format of [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData). You can use this object to integrate with other imaging libraries for processing.

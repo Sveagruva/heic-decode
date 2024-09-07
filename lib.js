@@ -1,3 +1,5 @@
+import {PNG} from "pngjs";
+
 const uint8ArrayUtf8ByteString = (array, start, end) => {
   return String.fromCharCode(...array.slice(start, end));
 };
@@ -37,7 +39,19 @@ const decodeImage = async (image) => {
     });
   });
 
-  return { width, height, data };
+  const img_png = new PNG({width: width, height: height});
+  img_png.data = Buffer.from(data);
+
+  const buffer = await new Promise((r) => {
+    const chunks = [];
+    img_png.pack()
+      // @ts-ignore
+      .on('data', (chunk) => chunks.push(Buffer.from(chunk)))
+      .on('end', () => r(Buffer.concat(chunks)));
+  });
+
+
+  return { width, height, buffer };
 };
 
 export default libheif => {
